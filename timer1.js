@@ -13,21 +13,24 @@
 // input = 0
 
 const numbers = process.argv.slice(2);
-
+const nums = numbers.join('')
 const scheduleBeep = function(delay) {
   setTimeout(() => {
     process.stdout.write('\x07');
   }, delay * 1000);
 }
 
-for (let num of numbers) {
-
-  if (Number(isNaN(num))) {
+for (let num of nums) {
+  if (num == 0) {
     return
-  } else {
+  } else if (Number(isNaN(num))) {
+    return
+    } else {
     scheduleBeep(num);
-  }
+    }
+    
 }
+
 
 
 
